@@ -1,0 +1,10 @@
+runs:
+  - name: root
+    working_dir: .
+    init:
+      backend: false
+      args:
+        - -input=false
+    validate:
+      args:
+        - -no-color

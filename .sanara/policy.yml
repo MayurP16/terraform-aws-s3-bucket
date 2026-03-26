@@ -1,0 +1,22 @@
+finding_policy:
+  auto_fix_allow:
+    - CKV_AWS_28
+    - CKV_AWS_119
+    - CKV_AWS_21
+    - CKV_AWS_53
+    - CKV_AWS_54
+    - CKV_AWS_55
+    - CKV_AWS_56
+    - CKV_AWS_145
+    - CKV2_AWS_6
+    - CKV2_AWS_65
+    - CKV_AWS_7
+  suggest_only:
+    - CKV_AWS_20
+
+advisor:
+  enabled: false
+  use_llm: false
+  max_findings: 5
+  min_severity: moderate
+version: 1

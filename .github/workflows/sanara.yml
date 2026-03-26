@@ -1,0 +1,43 @@
+name: sanara
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  TF_IN_AUTOMATION: true
+
+jobs:
+  remediate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git
+        run: |
+          git config user.name "Sanara[bot]"
+          git config user.email "sanara-bot@users.noreply.github.com"
+
+      - uses: MayurP16/sanara@v0.1.0a3
+        with:
+          allow_agentic: "false"
+          publish_dry_run: "false"
+          llm_context_mode: "module"
+          plan_required: "false"
+          log_level: "INFO"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sanara-artifacts
+          path: artifacts
