@@ -15,6 +15,7 @@ env:
 
 jobs:
   remediate:
+    if: github.actor == 'MayurP16'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,15 +27,19 @@ jobs:
           git config user.name "Sanara[bot]"
           git config user.email "sanara-bot@users.noreply.github.com"
 
-      - uses: MayurP16/sanara@v0.1.0a3
+      - uses: MayurP16/sanara@sanara-action
         with:
-          allow_agentic: "false"
+          allow_agentic: "true"
           publish_dry_run: "false"
           llm_context_mode: "module"
+          llm_provider: "anthropic"
+          agentic_max_attempts: "5"
+          anthropic_model: "claude-sonnet-4-6"
           plan_required: "false"
           log_level: "INFO"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - uses: actions/upload-artifact@v4
         if: always()

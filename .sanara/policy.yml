@@ -10,13 +10,24 @@ finding_policy:
     - CKV_AWS_145
     - CKV2_AWS_6
     - CKV2_AWS_65
+    - CKV2_AWS_60
+    - CKV2_AWS_62
+    - CKV2_AWS_64
+    - CKV_AWS_133
+    - CKV_AWS_136
+    - CKV_AWS_16
+    - CKV_AWS_163
+    - CKV_AWS_17
+    - CKV_AWS_293
+    - CKV_AWS_3
+    - CKV_AWS_50
     - CKV_AWS_7
+    - CKV_AWS_79
   suggest_only:
     - CKV_AWS_20
 
 advisor:
-  enabled: false
-  use_llm: false
+  enabled: true
+  use_llm: true
   max_findings: 5
   min_severity: moderate
-version: 1

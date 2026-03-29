@@ -1,5 +1,5 @@
 runs:
-  - name: root
+  - name: aws
     working_dir: .
     init:
       backend: false
