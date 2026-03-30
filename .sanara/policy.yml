@@ -23,12 +23,11 @@ finding_policy:
     - CKV_AWS_50
     - CKV_AWS_7
     - CKV_AWS_79
+
   suggest_only:
     - CKV_AWS_20
-  
+
   by_path:
-    - path: modules/**
-      auto_fix_mode: auto_fix_safe
     - path: examples/**
       auto_fix_mode: suggest_only
       category: module_examples
