@@ -87,6 +87,8 @@ resource "random_pet" "this" {
 resource "aws_kms_key" "objects" {
   description             = "KMS key is used to encrypt bucket objects"
   deletion_window_in_days = 7
+  policy                  = jsonencode({ Version = "2012-10-17", Statement = [{ Sid = "EnableRoot", Effect = "Allow", Principal = { AWS = "*" }, Action = "kms:*", Resource = "*" }] })
+  enable_key_rotation     = true
 }
 
 data "aws_iam_policy_document" "bucket_policy" {
