@@ -36,6 +36,8 @@ resource "aws_kms_key" "replica" {
 
   description             = "S3 bucket replication KMS key"
   deletion_window_in_days = 7
+  policy                  = jsonencode({ Version = "2012-10-17", Statement = [{ Sid = "EnableRoot", Effect = "Allow", Principal = { AWS = "*" }, Action = "kms:*", Resource = "*" }] })
+  enable_key_rotation     = true
 }
 
 module "replica_bucket" {
