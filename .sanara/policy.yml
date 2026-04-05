@@ -27,10 +27,10 @@ finding_policy:
   suggest_only:
     - CKV_AWS_20
 
-  by_path:
-    - path: examples/**
-      auto_fix_mode: suggest_only
-      category: module_examples
+  # by_path:
+  #   - path: examples/**
+  #     auto_fix_mode: suggest_only
+  #     category: module_examples
 
 advisor:
   enabled: true
